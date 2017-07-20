@@ -1,0 +1,464 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1C45954EBC432ECF2547E78C /* libPods-AVFoundationSimplePlayer-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4FA40EC3016A1FCADE61DBA /* libPods-AVFoundationSimplePlayer-iOS.a */; };
+		9583622B1F1E8D81008AA248 /* NielsenAppApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9583622A1F1E8D81008AA248 /* NielsenAppApi.framework */; };
+		9583622D1F1E8E62008AA248 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9583622C1F1E8E62008AA248 /* libsqlite3.0.tbd */; };
+		9583622F1F1E8E6E008AA248 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9583622E1F1E8E6E008AA248 /* AdSupport.framework */; };
+		958362311F1E8E75008AA248 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 958362301F1E8E75008AA248 /* SystemConfiguration.framework */; };
+		958362331F1E8E7D008AA248 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 958362321F1E8E7D008AA248 /* CoreLocation.framework */; };
+		958362541F20298F008AA248 /* SEGNielsenDCRIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = 958362511F20298F008AA248 /* SEGNielsenDCRIntegration.m */; };
+		958362551F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 958362531F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.m */; };
+		9583625A1F20336F008AA248 /* ElephantSeals.mov in Resources */ = {isa = PBXBuildFile; fileRef = 958362591F20335D008AA248 /* ElephantSeals.mov */; };
+		D20EB3C21AF94FDE0059CD72 /* AAPLPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D20EB3C11AF94FDE0059CD72 /* AAPLPlayerViewController.m */; };
+		D2385B4B1AF5181400DC8ADE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2385B491AF5181400DC8ADE /* Main.storyboard */; };
+		D2385B4D1AF5181400DC8ADE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2385B4C1AF5181400DC8ADE /* Images.xcassets */; };
+		D23E499F1B0D30AF0013F574 /* AAPLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D23E499E1B0D30AF0013F574 /* AAPLAppDelegate.m */; };
+		D27489A01B1CD92F0020D82A /* AAPLPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D274899F1B1CD92F0020D82A /* AAPLPlayerView.m */; };
+		D27489A31B1CD9370020D82A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D27489A11B1CD9370020D82A /* Localizable.strings */; };
+		D2C148E51B0FA7AD004F41DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C148E41B0FA7AD004F41DA /* main.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9583622A1F1E8D81008AA248 /* NielsenAppApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NielsenAppApi.framework; sourceTree = "<group>"; };
+		9583622C1F1E8E62008AA248 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		9583622E1F1E8E6E008AA248 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		958362301F1E8E75008AA248 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		958362321F1E8E7D008AA248 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		958362501F20298F008AA248 /* SEGNielsenDCRIntegration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEGNielsenDCRIntegration.h; path = "../../dev/src/github.com/segment-integrations/analytics-ios-integration-nielsen-dcr/Segment-Nielsen-DCR/Classes/SEGNielsenDCRIntegration.h"; sourceTree = "<group>"; };
+		958362511F20298F008AA248 /* SEGNielsenDCRIntegration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEGNielsenDCRIntegration.m; path = "../../dev/src/github.com/segment-integrations/analytics-ios-integration-nielsen-dcr/Segment-Nielsen-DCR/Classes/SEGNielsenDCRIntegration.m"; sourceTree = "<group>"; };
+		958362521F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEGNielsenDCRIntegrationFactory.h; path = "../../dev/src/github.com/segment-integrations/analytics-ios-integration-nielsen-dcr/Segment-Nielsen-DCR/Classes/SEGNielsenDCRIntegrationFactory.h"; sourceTree = "<group>"; };
+		958362531F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEGNielsenDCRIntegrationFactory.m; path = "../../dev/src/github.com/segment-integrations/analytics-ios-integration-nielsen-dcr/Segment-Nielsen-DCR/Classes/SEGNielsenDCRIntegrationFactory.m"; sourceTree = "<group>"; };
+		958362591F20335D008AA248 /* ElephantSeals.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ElephantSeals.mov; sourceTree = "<group>"; };
+		9B96E0F8422CD421D60A3DDB /* Pods-AVFoundationSimplePlayer-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVFoundationSimplePlayer-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVFoundationSimplePlayer-iOS/Pods-AVFoundationSimplePlayer-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		B0690A29C6A0252EDAB33747 /* Pods-AVFoundationSimplePlayer-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVFoundationSimplePlayer-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVFoundationSimplePlayer-iOS/Pods-AVFoundationSimplePlayer-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		D2010EFA1B0E8A8D00BD0BDF /* ElephantSeals.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = ElephantSeals.mov; path = ../Common/ElephantSeals.mov; sourceTree = SOURCE_ROOT; };
+		D20EB3C11AF94FDE0059CD72 /* AAPLPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLPlayerViewController.m; sourceTree = "<group>"; };
+		D2385B421AF5181400DC8ADE /* AVFoundationSimplePlayer-ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AVFoundationSimplePlayer-ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2385B4A1AF5181400DC8ADE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D2385B4C1AF5181400DC8ADE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D2385B511AF5181400DC8ADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D23E499D1B0D2DF90013F574 /* AAPLAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLAppDelegate.h; sourceTree = "<group>"; };
+		D23E499E1B0D30AF0013F574 /* AAPLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLAppDelegate.m; sourceTree = "<group>"; };
+		D23E49A01B0D325D0013F574 /* AAPLPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLPlayerViewController.h; sourceTree = "<group>"; };
+		D274899E1B1CD92F0020D82A /* AAPLPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLPlayerView.h; sourceTree = "<group>"; };
+		D274899F1B1CD92F0020D82A /* AAPLPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPLPlayerView.m; sourceTree = "<group>"; };
+		D27489A21B1CD9370020D82A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D2C148E41B0FA7AD004F41DA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D2CF22161B1E5EAD0006C864 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		E4FA40EC3016A1FCADE61DBA /* libPods-AVFoundationSimplePlayer-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AVFoundationSimplePlayer-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2385B3F1AF5181400DC8ADE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9583622D1F1E8E62008AA248 /* libsqlite3.0.tbd in Frameworks */,
+				958362331F1E8E7D008AA248 /* CoreLocation.framework in Frameworks */,
+				958362311F1E8E75008AA248 /* SystemConfiguration.framework in Frameworks */,
+				9583622F1F1E8E6E008AA248 /* AdSupport.framework in Frameworks */,
+				9583622B1F1E8D81008AA248 /* NielsenAppApi.framework in Frameworks */,
+				1C45954EBC432ECF2547E78C /* libPods-AVFoundationSimplePlayer-iOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0B3BE940B14C8BEA6A91F87A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B0690A29C6A0252EDAB33747 /* Pods-AVFoundationSimplePlayer-iOS.debug.xcconfig */,
+				9B96E0F8422CD421D60A3DDB /* Pods-AVFoundationSimplePlayer-iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		958362581F20335D008AA248 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				958362591F20335D008AA248 /* ElephantSeals.mov */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		9D46E982CEB24B8106206E79 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				958362321F1E8E7D008AA248 /* CoreLocation.framework */,
+				958362301F1E8E75008AA248 /* SystemConfiguration.framework */,
+				9583622E1F1E8E6E008AA248 /* AdSupport.framework */,
+				9583622C1F1E8E62008AA248 /* libsqlite3.0.tbd */,
+				9583622A1F1E8D81008AA248 /* NielsenAppApi.framework */,
+				E4FA40EC3016A1FCADE61DBA /* libPods-AVFoundationSimplePlayer-iOS.a */,
+			);
+			name = Frameworks;
+			path = "/Users/ladannasserian/Development/AVFoundationSimplePlayer-iOSUsingAVFoundationtoPlayMedia/Objective-C";
+			sourceTree = "<absolute>";
+		};
+		D2010EFD1B0E8AD600BD0BDF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D2010EFA1B0E8A8D00BD0BDF /* ElephantSeals.mov */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		D2385B391AF5181400DC8ADE = {
+			isa = PBXGroup;
+			children = (
+				958362581F20335D008AA248 /* Common */,
+				D2CF22161B1E5EAD0006C864 /* README.md */,
+				958362501F20298F008AA248 /* SEGNielsenDCRIntegration.h */,
+				958362511F20298F008AA248 /* SEGNielsenDCRIntegration.m */,
+				958362521F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.h */,
+				958362531F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.m */,
+				D2385B441AF5181400DC8ADE /* AVFoundationSimplePlayer-iOS */,
+				D2385B431AF5181400DC8ADE /* Products */,
+				0B3BE940B14C8BEA6A91F87A /* Pods */,
+				9D46E982CEB24B8106206E79 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D2385B431AF5181400DC8ADE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2385B421AF5181400DC8ADE /* AVFoundationSimplePlayer-ObjC.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D2385B441AF5181400DC8ADE /* AVFoundationSimplePlayer-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D23E499E1B0D30AF0013F574 /* AAPLAppDelegate.m */,
+				D23E499D1B0D2DF90013F574 /* AAPLAppDelegate.h */,
+				D20EB3C11AF94FDE0059CD72 /* AAPLPlayerViewController.m */,
+				D23E49A01B0D325D0013F574 /* AAPLPlayerViewController.h */,
+				D274899E1B1CD92F0020D82A /* AAPLPlayerView.h */,
+				D274899F1B1CD92F0020D82A /* AAPLPlayerView.m */,
+				D2385B491AF5181400DC8ADE /* Main.storyboard */,
+				D2385B4C1AF5181400DC8ADE /* Images.xcassets */,
+				D2385B511AF5181400DC8ADE /* Info.plist */,
+				D27489A11B1CD9370020D82A /* Localizable.strings */,
+				D2C148E31B0FA76B004F41DA /* Supporting Files */,
+				D2010EFD1B0E8AD600BD0BDF /* Common */,
+			);
+			path = "AVFoundationSimplePlayer-iOS";
+			sourceTree = "<group>";
+		};
+		D2C148E31B0FA76B004F41DA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D2C148E41B0FA7AD004F41DA /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D2385B411AF5181400DC8ADE /* AVFoundationSimplePlayer-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2385B5F1AF5181400DC8ADE /* Build configuration list for PBXNativeTarget "AVFoundationSimplePlayer-iOS" */;
+			buildPhases = (
+				F008A44C356F31126F679EAE /* [CP] Check Pods Manifest.lock */,
+				D2385B3E1AF5181400DC8ADE /* Sources */,
+				D2385B3F1AF5181400DC8ADE /* Frameworks */,
+				D2385B401AF5181400DC8ADE /* Resources */,
+				5A291388F21F468E313032A8 /* [CP] Embed Pods Frameworks */,
+				16BCB7A81B246F154D3DB5E7 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AVFoundationSimplePlayer-iOS";
+			productName = "AVFoundationSimplePlayer-iOS";
+			productReference = D2385B421AF5181400DC8ADE /* AVFoundationSimplePlayer-ObjC.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D2385B3A1AF5181400DC8ADE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Apple Inc.";
+				TargetAttributes = {
+					D2385B411AF5181400DC8ADE = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = D2385B3D1AF5181400DC8ADE /* Build configuration list for PBXProject "AVFoundationSimplePlayer-iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D2385B391AF5181400DC8ADE;
+			productRefGroup = D2385B431AF5181400DC8ADE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2385B411AF5181400DC8ADE /* AVFoundationSimplePlayer-iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D2385B401AF5181400DC8ADE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9583625A1F20336F008AA248 /* ElephantSeals.mov in Resources */,
+				D27489A31B1CD9370020D82A /* Localizable.strings in Resources */,
+				D2385B4B1AF5181400DC8ADE /* Main.storyboard in Resources */,
+				D2385B4D1AF5181400DC8ADE /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		16BCB7A81B246F154D3DB5E7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AVFoundationSimplePlayer-iOS/Pods-AVFoundationSimplePlayer-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A291388F21F468E313032A8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AVFoundationSimplePlayer-iOS/Pods-AVFoundationSimplePlayer-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F008A44C356F31126F679EAE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2385B3E1AF5181400DC8ADE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D23E499F1B0D30AF0013F574 /* AAPLAppDelegate.m in Sources */,
+				D27489A01B1CD92F0020D82A /* AAPLPlayerView.m in Sources */,
+				958362551F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.m in Sources */,
+				D2C148E51B0FA7AD004F41DA /* main.m in Sources */,
+				D20EB3C21AF94FDE0059CD72 /* AAPLPlayerViewController.m in Sources */,
+				958362541F20298F008AA248 /* SEGNielsenDCRIntegration.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D2385B491AF5181400DC8ADE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D2385B4A1AF5181400DC8ADE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D27489A11B1CD9370020D82A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D27489A21B1CD9370020D82A /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D2385B5D1AF5181400DC8ADE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D2385B5E1AF5181400DC8ADE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D2385B601AF5181400DC8ADE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0690A29C6A0252EDAB33747 /* Pods-AVFoundationSimplePlayer-iOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "AVFoundationSimplePlayer-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "AVFoundationSimplePlayer-ObjC";
+			};
+			name = Debug;
+		};
+		D2385B611AF5181400DC8ADE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B96E0F8422CD421D60A3DDB /* Pods-AVFoundationSimplePlayer-iOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "AVFoundationSimplePlayer-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "AVFoundationSimplePlayer-ObjC";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D2385B3D1AF5181400DC8ADE /* Build configuration list for PBXProject "AVFoundationSimplePlayer-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2385B5D1AF5181400DC8ADE /* Debug */,
+				D2385B5E1AF5181400DC8ADE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2385B5F1AF5181400DC8ADE /* Build configuration list for PBXNativeTarget "AVFoundationSimplePlayer-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2385B601AF5181400DC8ADE /* Debug */,
+				D2385B611AF5181400DC8ADE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D2385B3A1AF5181400DC8ADE /* Project object */;
+}

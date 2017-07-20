@@ -1,0 +1,20 @@
+PODS:
+  - Analytics (3.6.4)
+  - Segment-Nielsen-DCR (0.1.0):
+    - Analytics (~> 3.6)
+
+DEPENDENCIES:
+  - Analytics (~> 3.0)
+  - Segment-Nielsen-DCR (from `~/dev/src/github.com/segment-integrations/analytics-ios-integration-nielsen-dcr/`)
+
+EXTERNAL SOURCES:
+  Segment-Nielsen-DCR:
+    :path: "~/dev/src/github.com/segment-integrations/analytics-ios-integration-nielsen-dcr/"
+
+SPEC CHECKSUMS:
+  Analytics: a24b6b80f9f16dfb69aac605da5c3854bdfb328a
+  Segment-Nielsen-DCR: 7ffb85a748dfc2a676dea11cd9a8365c0abe12ff
+
+PODFILE CHECKSUM: 5b13a8254bd4c8f8e4f64f7d3ced45a136cc9d95
+
+COCOAPODS: 1.2.1
