@@ -306,29 +306,11 @@ static int AAPLPlayerViewControllerKVOContext = 0;
 - (IBAction)rewindButtonWasPressed:(UIButton *)sender
 {
     self.rate = MAX(self.player.rate - 2.0, -2.0); // rewind no faster than -2.0
-    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Seek Started" properties:@{ @"session_id" : @"19238109",
-                                                                                       @"content_asset_id" : @"1234",
-                                                                                       @"video_player" : @"vimeo",
-                                                                                       @"position" : @25,
-                                                                                       @"sound" : @100,
-                                                                                       @"full_screen" : @YES,
-                                                                                       @"bitrate" : @50,
-                                                                                       @"total_length" : @100,
-                                                                                       @"livestream" : @NO }];
 }
 
 - (IBAction)fastForwardButtonWasPressed:(UIButton *)sender
 {
     self.rate = MIN(self.player.rate + 2.0, 2.0); // fast forward no faster than 2.0
-    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Seek Started" properties:@{ @"session_id" : @"19238109",
-                                                                                       @"content_asset_id" : @"1234",
-                                                                                       @"video_player" : @"vimeo",
-                                                                                       @"position" : @80,
-                                                                                       @"sound" : @100,
-                                                                                       @"full_screen" : @YES,
-                                                                                       @"bitrate" : @50,
-                                                                                       @"total_length" : @100,
-                                                                                       @"livestream" : @NO }];
 }
 
 - (IBAction)timeSliderDidChange:(UISlider *)sender
