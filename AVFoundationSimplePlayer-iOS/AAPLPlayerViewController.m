@@ -43,6 +43,31 @@ static int AAPLPlayerViewControllerKVOContext = 0;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Started" properties:@{ @"session_id" : @"19238109",
+                                                                                  @"content_asset_id" : @"1234",
+                                                                                  @"video_player" : @"vimeo",
+                                                                                  @"position" : @30,
+                                                                                  @"sound" : @100,
+                                                                                  @"full_screen" : @YES,
+                                                                                  @"bitrate" : @50,
+                                                                                  @"total_length" : @100,
+                                                                                  @"livestream" : @NO }];
+
+    [[SEGAnalytics sharedAnalytics] track:@"Video Content Started" properties:@{
+        @"session_id" : @"19238109",
+        @"asset_id" : @"1234",
+        @"pod_id" : @"65462",
+        @"title" : @"Big Trouble in Little Sanchez",
+        @"season" : @"2",
+        @"episode" : @"7",
+        @"genre" : @"cartoon",
+        @"program" : @"Rick and Morty",
+        @"total_length" : @400,
+        @"full_episode" : @"true",
+        @"publisher" : @"Turner Broadcasting Network",
+        @"position" : @1,
+        @"channel" : @"Cartoon Network"
+    }];
 
     /*
         Update the UI when these player properties change.
@@ -72,13 +97,30 @@ static int AAPLPlayerViewControllerKVOContext = 0;
 
 - (void)itemDidFinishPlaying:(NSNotification *)notification
 {
-    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Completed" properties:@{ @"content_asset_id" : @"1234",
-                                                                                    @"ad_type" : @"mid-roll",
+    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Completed" properties:@{ @"session_id" : @"19238109",
+                                                                                    @"content_asset_id" : @"1234",
                                                                                     @"video_player" : @"vimeo",
-                                                                                    @"position" : @30,
+                                                                                    @"position" : @100,
                                                                                     @"sound" : @100,
                                                                                     @"full_screen" : @YES,
-                                                                                    @"bitrate" : @50 }];
+                                                                                    @"bitrate" : @50,
+                                                                                    @"total_length" : @100,
+                                                                                    @"livestream" : @NO }];
+
+    [[SEGAnalytics sharedAnalytics] track:@"Video Content Completed" properties:@{
+        @"asset_id" : @"3543",
+        @"pod_id" : @"65462",
+        @"title" : @"Big Trouble in Little Sanchez",
+        @"season" : @"2",
+        @"episode" : @"7",
+        @"genre" : @"cartoon",
+        @"program" : @"Rick and Morty",
+        @"total_length" : @100,
+        @"full_episode" : @"true",
+        @"publisher" : @"Turner Broadcasting Network",
+        @"channel" : @"Cartoon Network",
+        @"position" : @100
+    }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -91,13 +133,15 @@ static int AAPLPlayerViewControllerKVOContext = 0;
     }
 
     [self.player pause];
-    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Interrupted" properties:@{ @"content_asset_id" : @"7890",
-                                                                                      @"ad_type" : @"mid-roll",
+    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Interrupted" properties:@{ @"session_id" : @"19238109",
+                                                                                      @"content_asset_id" : @"1234",
                                                                                       @"video_player" : @"vimeo",
                                                                                       @"position" : @30,
                                                                                       @"sound" : @100,
                                                                                       @"full_screen" : @YES,
-                                                                                      @"bitrate" : @50 }];
+                                                                                      @"bitrate" : @50,
+                                                                                      @"total_length" : @100,
+                                                                                      @"livestream" : @NO }];
 
 
     [self removeObserver:self forKeyPath:@"asset" context:&AAPLPlayerViewControllerKVOContext];
@@ -237,7 +281,7 @@ static int AAPLPlayerViewControllerKVOContext = 0;
             self.currentTime = kCMTimeZero;
         }
         [self.player play];
-        [[SEGAnalytics sharedAnalytics] track:@"Video Playback Started" properties:@{
+        [[SEGAnalytics sharedAnalytics] track:@"Video Content Playing" properties:@{
             @"content_asset_id" : @"1234",
             @"position" : @0,
             @"ad_type" : @"pre-roll",
@@ -247,30 +291,58 @@ static int AAPLPlayerViewControllerKVOContext = 0;
     } else {
         // playing so pause
         [self.player pause];
-        [[SEGAnalytics sharedAnalytics] track:@"Video Playback Paused" properties:@{ @"content_asset_id" : @"1234",
-                                                                                     @"ad_type" : @"mid-roll",
+        [[SEGAnalytics sharedAnalytics] track:@"Video Playback Paused" properties:@{ @"session_id" : @"19238109",
+                                                                                     @"content_asset_id" : @"1234",
                                                                                      @"video_player" : @"vimeo",
-                                                                                     @"position" : @30,
+                                                                                     @"position" : @50,
                                                                                      @"sound" : @100,
                                                                                      @"full_screen" : @YES,
-                                                                                     @"bitrate" : @50 }];
+                                                                                     @"bitrate" : @50,
+                                                                                     @"total_length" : @100,
+                                                                                     @"livestream" : @NO }];
     }
 }
 
 - (IBAction)rewindButtonWasPressed:(UIButton *)sender
 {
     self.rate = MAX(self.player.rate - 2.0, -2.0); // rewind no faster than -2.0
+    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Seek Started" properties:@{ @"session_id" : @"19238109",
+                                                                                       @"content_asset_id" : @"1234",
+                                                                                       @"video_player" : @"vimeo",
+                                                                                       @"position" : @25,
+                                                                                       @"sound" : @100,
+                                                                                       @"full_screen" : @YES,
+                                                                                       @"bitrate" : @50,
+                                                                                       @"total_length" : @100,
+                                                                                       @"livestream" : @NO }];
 }
 
 - (IBAction)fastForwardButtonWasPressed:(UIButton *)sender
 {
     self.rate = MIN(self.player.rate + 2.0, 2.0); // fast forward no faster than 2.0
+    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Seek Started" properties:@{ @"session_id" : @"19238109",
+                                                                                       @"content_asset_id" : @"1234",
+                                                                                       @"video_player" : @"vimeo",
+                                                                                       @"position" : @80,
+                                                                                       @"sound" : @100,
+                                                                                       @"full_screen" : @YES,
+                                                                                       @"bitrate" : @50,
+                                                                                       @"total_length" : @100,
+                                                                                       @"livestream" : @NO }];
 }
 
 - (IBAction)timeSliderDidChange:(UISlider *)sender
 {
     self.currentTime = CMTimeMakeWithSeconds(sender.value, 1000);
-    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Seek Started"];
+    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Seek Started" properties:@{ @"session_id" : @"19238109",
+                                                                                       @"content_asset_id" : @"1234",
+                                                                                       @"video_player" : @"vimeo",
+                                                                                       @"position" : @90,
+                                                                                       @"sound" : @100,
+                                                                                       @"full_screen" : @YES,
+                                                                                       @"bitrate" : @50,
+                                                                                       @"total_length" : @100,
+                                                                                       @"livestream" : @NO }];
 }
 
 // MARK: - KV Observation

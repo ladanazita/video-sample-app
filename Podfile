@@ -9,6 +9,7 @@ target 'AVFoundationSimplePlayer-iOS' do
   
   pod 'Analytics', '~> 3.0'
   pod "Segment-Nielsen-DCR", :path => ‘~/dev/src/github.com/segment-integrations/analytics-ios-integration-nielsen-dcr/’
+  # pod "Segment-Nielsen-DCR", :git => ‘https://github.com/segment-integrations/analytics-ios-integration-nielsen-dcr.git’, :branch => 'initial/implementation'
 
 
 end
