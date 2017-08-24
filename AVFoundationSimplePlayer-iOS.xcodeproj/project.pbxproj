@@ -16,6 +16,8 @@
 		958362541F20298F008AA248 /* SEGNielsenDCRIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = 958362511F20298F008AA248 /* SEGNielsenDCRIntegration.m */; };
 		958362551F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 958362531F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.m */; };
 		9583625A1F20336F008AA248 /* ElephantSeals.mov in Resources */ = {isa = PBXBuildFile; fileRef = 958362591F20335D008AA248 /* ElephantSeals.mov */; };
+		95D5D06F1F4E533800E82BED /* PopeyeMovie.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 95D5D06E1F4E533800E82BED /* PopeyeMovie.mp4 */; };
+		95D5D0711F4E534100E82BED /* BigBuck.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 95D5D0701F4E534100E82BED /* BigBuck.mp4 */; };
 		D20EB3C21AF94FDE0059CD72 /* AAPLPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D20EB3C11AF94FDE0059CD72 /* AAPLPlayerViewController.m */; };
 		D2385B4B1AF5181400DC8ADE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2385B491AF5181400DC8ADE /* Main.storyboard */; };
 		D2385B4D1AF5181400DC8ADE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2385B4C1AF5181400DC8ADE /* Images.xcassets */; };
@@ -36,6 +38,8 @@
 		958362521F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEGNielsenDCRIntegrationFactory.h; path = "../../dev/src/github.com/segment-integrations/analytics-ios-integration-nielsen-dcr/Segment-Nielsen-DCR/Classes/SEGNielsenDCRIntegrationFactory.h"; sourceTree = "<group>"; };
 		958362531F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEGNielsenDCRIntegrationFactory.m; path = "../../dev/src/github.com/segment-integrations/analytics-ios-integration-nielsen-dcr/Segment-Nielsen-DCR/Classes/SEGNielsenDCRIntegrationFactory.m"; sourceTree = "<group>"; };
 		958362591F20335D008AA248 /* ElephantSeals.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ElephantSeals.mov; sourceTree = "<group>"; };
+		95D5D06E1F4E533800E82BED /* PopeyeMovie.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = PopeyeMovie.mp4; sourceTree = "<group>"; };
+		95D5D0701F4E534100E82BED /* BigBuck.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = BigBuck.mp4; sourceTree = "<group>"; };
 		9B96E0F8422CD421D60A3DDB /* Pods-AVFoundationSimplePlayer-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVFoundationSimplePlayer-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVFoundationSimplePlayer-iOS/Pods-AVFoundationSimplePlayer-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		B0690A29C6A0252EDAB33747 /* Pods-AVFoundationSimplePlayer-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVFoundationSimplePlayer-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVFoundationSimplePlayer-iOS/Pods-AVFoundationSimplePlayer-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D2010EFA1B0E8A8D00BD0BDF /* ElephantSeals.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = ElephantSeals.mov; path = ../Common/ElephantSeals.mov; sourceTree = SOURCE_ROOT; };
@@ -84,6 +88,8 @@
 		958362581F20335D008AA248 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				95D5D06E1F4E533800E82BED /* PopeyeMovie.mp4 */,
+				95D5D0701F4E534100E82BED /* BigBuck.mp4 */,
 				958362591F20335D008AA248 /* ElephantSeals.mov */,
 			);
 			path = Common;
@@ -224,6 +230,8 @@
 			files = (
 				9583625A1F20336F008AA248 /* ElephantSeals.mov in Resources */,
 				D27489A31B1CD9370020D82A /* Localizable.strings in Resources */,
+				95D5D06F1F4E533800E82BED /* PopeyeMovie.mp4 in Resources */,
+				95D5D0711F4E534100E82BED /* BigBuck.mp4 in Resources */,
 				D2385B4B1AF5181400DC8ADE /* Main.storyboard in Resources */,
 				D2385B4D1AF5181400DC8ADE /* Images.xcassets in Resources */,
 			);

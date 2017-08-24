@@ -43,31 +43,6 @@ static int AAPLPlayerViewControllerKVOContext = 0;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Started" properties:@{ @"session_id" : @"19238109",
-                                                                                  @"content_asset_id" : @"1234",
-                                                                                  @"video_player" : @"vimeo",
-                                                                                  @"position" : @30,
-                                                                                  @"sound" : @100,
-                                                                                  @"full_screen" : @YES,
-                                                                                  @"bitrate" : @50,
-                                                                                  @"total_length" : @100,
-                                                                                  @"livestream" : @NO }];
-
-    [[SEGAnalytics sharedAnalytics] track:@"Video Content Started" properties:@{
-        @"session_id" : @"19238109",
-        @"asset_id" : @"1234",
-        @"pod_id" : @"65462",
-        @"title" : @"Big Trouble in Little Sanchez",
-        @"season" : @"2",
-        @"episode" : @"7",
-        @"genre" : @"cartoon",
-        @"program" : @"Rick and Morty",
-        @"total_length" : @400,
-        @"full_episode" : @"true",
-        @"publisher" : @"Turner Broadcasting Network",
-        @"position" : @1,
-        @"channel" : @"Cartoon Network"
-    }];
 
     /*
         Update the UI when these player properties change.
@@ -281,6 +256,32 @@ static int AAPLPlayerViewControllerKVOContext = 0;
             self.currentTime = kCMTimeZero;
         }
         [self.player play];
+        [[SEGAnalytics sharedAnalytics] track:@"Video Playback Started" properties:@{ @"session_id" : @"19238109",
+                                                                                      @"content_asset_id" : @"1234",
+                                                                                      @"video_player" : @"vimeo",
+                                                                                      @"position" : @30,
+                                                                                      @"sound" : @100,
+                                                                                      @"full_screen" : @YES,
+                                                                                      @"bitrate" : @50,
+                                                                                      @"total_length" : @100,
+                                                                                      @"livestream" : @NO }];
+        
+        [[SEGAnalytics sharedAnalytics] track:@"Video Content Started" properties:@{
+                                                                                    @"session_id" : @"19238109",
+                                                                                    @"asset_id" : @"1234",
+                                                                                    @"pod_id" : @"65462",
+                                                                                    @"title" : @"Big Trouble in Little Sanchez",
+                                                                                    @"season" : @"2",
+                                                                                    @"episode" : @"7",
+                                                                                    @"genre" : @"cartoon",
+                                                                                    @"program" : @"Rick and Morty",
+                                                                                    @"total_length" : @400,
+                                                                                    @"full_episode" : @"true",
+                                                                                    @"publisher" : @"Turner Broadcasting Network",
+                                                                                    @"position" : @1,
+                                                                                    @"channel" : @"Cartoon Network"
+                                                                                    }];
+        
         [[SEGAnalytics sharedAnalytics] track:@"Video Content Playing" properties:@{
             @"content_asset_id" : @"1234",
             @"position" : @0,
@@ -325,6 +326,25 @@ static int AAPLPlayerViewControllerKVOContext = 0;
                                                                                        @"bitrate" : @50,
                                                                                        @"total_length" : @100,
                                                                                        @"livestream" : @NO }];
+}
+
+- (IBAction)channelUpButtonPressed:(id)sender
+{
+    self.playerView.playerLayer.player = nil;
+    self.playerView.playerLayer.player = self.player;
+    
+    NSURL *movieURL = [[NSBundle mainBundle] URLForResource:@"BigBuck" withExtension:@"mp4"];
+    self.asset = [AVURLAsset assetWithURL:movieURL];
+    
+}
+
+- (IBAction)channelDownButtonPressed:(id)sender
+{
+    self.playerView.playerLayer.player = nil;
+    self.playerView.playerLayer.player = self.player;
+    
+    NSURL *movieURL = [[NSBundle mainBundle] URLForResource:@"PopeyeMovie" withExtension:@"mp4"];
+    self.asset = [AVURLAsset assetWithURL:movieURL];
 }
 
 // MARK: - KV Observation
