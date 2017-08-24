@@ -24,8 +24,10 @@
 }
 
 @property AVPlayerItem *playerItem;
+@property (nonatomic, strong) NSTimer *playheadTimer;
 
 @property (readonly) AVPlayerLayer *playerLayer;
+@property NSDictionary *metadata;
 
 @end
 
@@ -43,6 +45,7 @@ static int AAPLPlayerViewControllerKVOContext = 0;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[SEGAnalytics sharedAnalytics] screen:@"Main"];
 
     /*
         Update the UI when these player properties change.
@@ -57,9 +60,6 @@ static int AAPLPlayerViewControllerKVOContext = 0;
 
     self.playerView.playerLayer.player = self.player;
 
-    NSURL *movieURL = [[NSBundle mainBundle] URLForResource:@"ElephantSeals" withExtension:@"mov"];
-    self.asset = [AVURLAsset assetWithURL:movieURL];
-
     // Use a weak self variable to avoid a retain cycle in the block.
     AAPLPlayerViewController __weak *weakSelf = self;
     _timeObserverToken = [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:
@@ -72,29 +72,31 @@ static int AAPLPlayerViewControllerKVOContext = 0;
 
 - (void)itemDidFinishPlaying:(NSNotification *)notification
 {
-    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Completed" properties:@{ @"session_id" : @"19238109",
-                                                                                    @"content_asset_id" : @"1234",
-                                                                                    @"video_player" : @"vimeo",
-                                                                                    @"position" : @100,
-                                                                                    @"sound" : @100,
-                                                                                    @"full_screen" : @YES,
-                                                                                    @"bitrate" : @50,
-                                                                                    @"total_length" : @100,
-                                                                                    @"livestream" : @NO }];
+    NSNumber *position = [NSNumber numberWithFloat:CMTimeGetSeconds(self.currentTime)];
+    NSNumber *total = [NSNumber numberWithFloat:CMTimeGetSeconds(self.duration)];
+
+    [self stopPlayheadTimer];
+    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Completed" properties:@{ @"session_id" : self.metadata[@"session_id"],
+                                                                                    @"content_asset_id" : self.metadata[@"content_asset_id"],
+                                                                                    @"position" : position,
+                                                                                    @"sound" : self.metadata[@"sound"],
+                                                                                    @"full_screen" : self.metadata[@"full_screen"],
+                                                                                    @"total_length" : total,
+                                                                                    @"livestream" : self.metadata[@"livestream"] }];
 
     [[SEGAnalytics sharedAnalytics] track:@"Video Content Completed" properties:@{
-        @"asset_id" : @"3543",
-        @"pod_id" : @"65462",
-        @"title" : @"Big Trouble in Little Sanchez",
-        @"season" : @"2",
-        @"episode" : @"7",
-        @"genre" : @"cartoon",
-        @"program" : @"Rick and Morty",
-        @"total_length" : @100,
-        @"full_episode" : @"true",
-        @"publisher" : @"Turner Broadcasting Network",
-        @"channel" : @"Cartoon Network",
-        @"position" : @100
+        @"asset_id" : self.metadata[@"asset_id"],
+        @"pod_id" : self.metadata[@"pod_id"],
+        @"title" : self.metadata[@"title"],
+        @"season" : self.metadata[@"season"],
+        @"episode" : self.metadata[@"episode"],
+        @"genre" : self.metadata[@"genre"],
+        @"program" : self.metadata[@"program"],
+        @"total_length" : total,
+        @"full_episode" : self.metadata[@"full_episode"],
+        @"publisher" : self.metadata[@"publisher"],
+        @"channel" : self.metadata[@"channel"],
+        @"position" : position
     }];
 }
 
@@ -106,17 +108,19 @@ static int AAPLPlayerViewControllerKVOContext = 0;
         [self.player removeTimeObserver:_timeObserverToken];
         _timeObserverToken = nil;
     }
-
+    NSNumber *position = [NSNumber numberWithFloat:CMTimeGetSeconds(self.currentTime)];
+    NSNumber *total = [NSNumber numberWithFloat:CMTimeGetSeconds(self.duration)];
+    [self stopPlayheadTimer];
     [self.player pause];
-    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Interrupted" properties:@{ @"session_id" : @"19238109",
-                                                                                      @"content_asset_id" : @"1234",
-                                                                                      @"video_player" : @"vimeo",
-                                                                                      @"position" : @30,
-                                                                                      @"sound" : @100,
-                                                                                      @"full_screen" : @YES,
-                                                                                      @"bitrate" : @50,
-                                                                                      @"total_length" : @100,
-                                                                                      @"livestream" : @NO }];
+    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Interrupted" properties:@{ @"session_id" : self.metadata[@"session_id"],
+                                                                                      @"content_asset_id" : self.metadata[@"content_asset_id"],
+                                                                                      @"video_player" :self.metadata[@"video_player"],
+                                                                                      @"position" : position,
+                                                                                      @"sound" :self.metadata[@"sound"],
+                                                                                      @"full_screen" : self.metadata[@"full_screen"],
+                                                                                      @"bitrate" : self.metadata[@"bitrate"],
+                                                                                      @"total_length" : total,
+                                                                                      @"livestream" :self.metadata[@"livestream"] }];
 
 
     [self removeObserver:self forKeyPath:@"asset" context:&AAPLPlayerViewControllerKVOContext];
@@ -245,6 +249,49 @@ static int AAPLPlayerViewControllerKVOContext = 0;
     }];
 }
 
+// MARK: - Heartbeat Timer
+
+- (void)playHeadTimeEvent
+{
+    
+    NSNumber *position = [NSNumber numberWithFloat:CMTimeGetSeconds(self.currentTime)];
+    NSNumber *total = [NSNumber numberWithFloat:CMTimeGetSeconds(self.duration)];
+    NSDictionary *props = @{
+                            @"session_id" : self.metadata[@"session_id"],
+                            @"asset_id" : self.metadata[@"asset_id"],
+                            @"pod_id" : self.metadata[@"pod_id"],
+                            @"title" : self.metadata[@"title"],
+                            @"season" : self.metadata[@"season"],
+                            @"episode" : self.metadata[@"episode"],
+                            @"genre" : self.metadata[@"genre"],
+                            @"program" : self.metadata[@"program"],
+                            @"total_length" : total,
+                            @"full_episode" : self.metadata[@"full_episode"],
+                            @"publisher" : self.metadata[@"publisher"],
+                            @"position" : position,
+                            @"channel" : self.metadata[@"channel"]
+                            };
+    
+    [[SEGAnalytics sharedAnalytics] track:@"Video Content Playing" properties:props];
+}
+
+- (void)startPlayheadTimer
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+            self.playheadTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(playHeadTimeEvent) userInfo:nil repeats:YES];
+    });
+}
+
+- (void)stopPlayheadTimer
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.playheadTimer) {
+            [self.playheadTimer invalidate];
+            self.playheadTimer = nil;
+        }
+    });
+}
+
 // MARK: - IBActions
 
 - (IBAction)playPauseButtonWasPressed:(UIButton *)sender
@@ -256,96 +303,134 @@ static int AAPLPlayerViewControllerKVOContext = 0;
             self.currentTime = kCMTimeZero;
         }
         [self.player play];
-        [[SEGAnalytics sharedAnalytics] track:@"Video Playback Started" properties:@{ @"session_id" : @"19238109",
-                                                                                      @"content_asset_id" : @"1234",
-                                                                                      @"video_player" : @"vimeo",
-                                                                                      @"position" : @30,
-                                                                                      @"sound" : @100,
-                                                                                      @"full_screen" : @YES,
-                                                                                      @"bitrate" : @50,
-                                                                                      @"total_length" : @100,
-                                                                                      @"livestream" : @NO }];
+        NSNumber *position = [NSNumber numberWithFloat:CMTimeGetSeconds(self.currentTime)];
+        NSNumber *total = [NSNumber numberWithFloat:CMTimeGetSeconds(self.duration)];
         
-        [[SEGAnalytics sharedAnalytics] track:@"Video Content Started" properties:@{
-                                                                                    @"session_id" : @"19238109",
-                                                                                    @"asset_id" : @"1234",
-                                                                                    @"pod_id" : @"65462",
-                                                                                    @"title" : @"Big Trouble in Little Sanchez",
-                                                                                    @"season" : @"2",
-                                                                                    @"episode" : @"7",
-                                                                                    @"genre" : @"cartoon",
-                                                                                    @"program" : @"Rick and Morty",
-                                                                                    @"total_length" : @400,
-                                                                                    @"full_episode" : @"true",
-                                                                                    @"publisher" : @"Turner Broadcasting Network",
-                                                                                    @"position" : @1,
-                                                                                    @"channel" : @"Cartoon Network"
-                                                                                    }];
-        
-        [[SEGAnalytics sharedAnalytics] track:@"Video Content Playing" properties:@{
-            @"content_asset_id" : @"1234",
-            @"position" : @0,
-            @"ad_type" : @"pre-roll",
-            @"video_player" : @"vimeo"
-        }];
+        NSDictionary *props = @{
+                                     @"session_id" : self.metadata[@"session_id"],
+                                     @"asset_id" : self.metadata[@"asset_id"],
+                                     @"pod_id" : self.metadata[@"pod_id"],
+                                     @"title" : self.metadata[@"title"],
+                                     @"season" : self.metadata[@"season"],
+                                     @"episode" : self.metadata[@"episode"],
+                                     @"genre" : self.metadata[@"genre"],
+                                     @"program" : self.metadata[@"program"],
+                                     @"total_length" : total,
+                                     @"full_episode" : self.metadata[@"full_episode"],
+                                     @"publisher" : self.metadata[@"publisher"],
+                                     @"position" : position,
+                                     @"channel" : self.metadata[@"channel"]
+                                     };
 
+        [[SEGAnalytics sharedAnalytics] track:@"Video Playback Started" properties:props];
+        [[SEGAnalytics sharedAnalytics] track:@"Video Content Started" properties:props];
+        [self startPlayheadTimer];
+        
     } else {
         // playing so pause
         [self.player pause];
-        [[SEGAnalytics sharedAnalytics] track:@"Video Playback Paused" properties:@{ @"session_id" : @"19238109",
-                                                                                     @"content_asset_id" : @"1234",
-                                                                                     @"video_player" : @"vimeo",
-                                                                                     @"position" : @50,
-                                                                                     @"sound" : @100,
-                                                                                     @"full_screen" : @YES,
-                                                                                     @"bitrate" : @50,
-                                                                                     @"total_length" : @100,
-                                                                                     @"livestream" : @NO }];
+        [self stopPlayheadTimer];
+        NSNumber *position = [NSNumber numberWithFloat:CMTimeGetSeconds(self.currentTime)];
+        NSNumber *total = [NSNumber numberWithFloat:CMTimeGetSeconds(self.duration)];
+
+        [[SEGAnalytics sharedAnalytics] track:@"Video Playback Paused" properties:@{ @"session_id" : self.metadata[@"session_id"],
+                                                                                     @"content_asset_id" : self.metadata[@"content_asset_id"],
+                                                                                     @"video_player" : self.metadata[@"video_player"],
+                                                                                     @"position" : position,
+                                                                                     @"sound" : self.metadata[@"sound"],
+                                                                                     @"full_screen" : self.metadata[@"full_screen"],
+                                                                                     @"bitrate" : self.metadata[@"bitrate"],
+                                                                                     @"total_length" : total,
+                                                                                     @"livestream" : self.metadata[@"livestream"]
+                                                                                     }];
     }
 }
 
 - (IBAction)rewindButtonWasPressed:(UIButton *)sender
 {
     self.rate = MAX(self.player.rate - 2.0, -2.0); // rewind no faster than -2.0
+    [self stopPlayheadTimer];
+
 }
 
 - (IBAction)fastForwardButtonWasPressed:(UIButton *)sender
 {
     self.rate = MIN(self.player.rate + 2.0, 2.0); // fast forward no faster than 2.0
+    [self stopPlayheadTimer];
+
 }
 
 - (IBAction)timeSliderDidChange:(UISlider *)sender
 {
     self.currentTime = CMTimeMakeWithSeconds(sender.value, 1000);
-    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Seek Started" properties:@{ @"session_id" : @"19238109",
-                                                                                       @"content_asset_id" : @"1234",
-                                                                                       @"video_player" : @"vimeo",
-                                                                                       @"position" : @90,
-                                                                                       @"sound" : @100,
-                                                                                       @"full_screen" : @YES,
-                                                                                       @"bitrate" : @50,
-                                                                                       @"total_length" : @100,
-                                                                                       @"livestream" : @NO }];
+    [self.player pause];
 }
 
 - (IBAction)channelUpButtonPressed:(id)sender
 {
+    [self stopPlayheadTimer];
     self.playerView.playerLayer.player = nil;
     self.playerView.playerLayer.player = self.player;
     
+    [[SEGAnalytics sharedAnalytics] screen:@"Big Buck Bunny"];
+    
     NSURL *movieURL = [[NSBundle mainBundle] URLForResource:@"BigBuck" withExtension:@"mp4"];
     self.asset = [AVURLAsset assetWithURL:movieURL];
+    self.metadata = @{
+                      @"session_id" : @"19238109",
+                      @"asset_id" : @"1234",
+                      @"content_asset_id" : @"1234",
+                      @"video_player" : @"vimeo",
+                      @"sound" : @100,
+                      @"pod_id" :@"podId2",
+                      @"full_screen" : @YES,
+                      @"bitrate" : @50,
+                      @"livestream" : @NO,
+                      @"pod_id" : @"65462",
+                      @"title" : @"Big Buck Bunny: Peach",
+                      @"season" : @"1",
+                      @"episode" : @"1",
+                      @"genre" : @"cartoon",
+                      @"program" : @"Big Buck Bunny",
+                      @"full_episode" : @"true",
+                      @"publisher" : @"Blender Foundation",
+                      @"channel" : @"Creative Commons"
+                      };
     
 }
 
 - (IBAction)channelDownButtonPressed:(id)sender
 {
+    [self stopPlayheadTimer];
     self.playerView.playerLayer.player = nil;
     self.playerView.playerLayer.player = self.player;
     
+    [[SEGAnalytics sharedAnalytics] screen:@"Popeye: NearlyWeds"];
+    
     NSURL *movieURL = [[NSBundle mainBundle] URLForResource:@"PopeyeMovie" withExtension:@"mp4"];
     self.asset = [AVURLAsset assetWithURL:movieURL];
+    self.metadata = @{
+                      @"session_id" : @"32423905",
+                      @"asset_id" : @"5678",
+                      @"pod_id" :@"podId1",
+                      @"content_asset_id" : @"5678",
+                      @"video_player" : @"mp4",
+                      @"sound" : @100,
+                      @"full_screen" : @YES,
+                      @"bitrate" : @50,
+                      @"livestream" : @NO,
+                      @"pod_id" : @"65462",
+                      @"title" : @"Nearlyweds",
+                      @"season" : @"2",
+                      @"episode" : @"26",
+                      @"genre" : @"cartoon",
+                      @"program" : @"Popeye",
+                      @"full_episode" : @"true",
+                      @"publisher" : @"Time Warner",
+                      @"channel" : @"CBS",
+                      };
 }
+
 
 // MARK: - KV Observation
 
