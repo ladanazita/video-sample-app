@@ -114,13 +114,13 @@ static int AAPLPlayerViewControllerKVOContext = 0;
     [self.player pause];
     [[SEGAnalytics sharedAnalytics] track:@"Video Playback Interrupted" properties:@{ @"session_id" : self.metadata[@"session_id"],
                                                                                       @"content_asset_id" : self.metadata[@"content_asset_id"],
-                                                                                      @"video_player" :self.metadata[@"video_player"],
+                                                                                      @"video_player" : self.metadata[@"video_player"],
                                                                                       @"position" : position,
-                                                                                      @"sound" :self.metadata[@"sound"],
+                                                                                      @"sound" : self.metadata[@"sound"],
                                                                                       @"full_screen" : self.metadata[@"full_screen"],
                                                                                       @"bitrate" : self.metadata[@"bitrate"],
                                                                                       @"total_length" : total,
-                                                                                      @"livestream" :self.metadata[@"livestream"] }];
+                                                                                      @"livestream" : self.metadata[@"livestream"] }];
 
 
     [self removeObserver:self forKeyPath:@"asset" context:&AAPLPlayerViewControllerKVOContext];
@@ -253,32 +253,31 @@ static int AAPLPlayerViewControllerKVOContext = 0;
 
 - (void)playHeadTimeEvent
 {
-    
     NSNumber *position = [NSNumber numberWithFloat:CMTimeGetSeconds(self.currentTime)];
     NSNumber *total = [NSNumber numberWithFloat:CMTimeGetSeconds(self.duration)];
     NSDictionary *props = @{
-                            @"session_id" : self.metadata[@"session_id"],
-                            @"asset_id" : self.metadata[@"asset_id"],
-                            @"pod_id" : self.metadata[@"pod_id"],
-                            @"title" : self.metadata[@"title"],
-                            @"season" : self.metadata[@"season"],
-                            @"episode" : self.metadata[@"episode"],
-                            @"genre" : self.metadata[@"genre"],
-                            @"program" : self.metadata[@"program"],
-                            @"total_length" : total,
-                            @"full_episode" : self.metadata[@"full_episode"],
-                            @"publisher" : self.metadata[@"publisher"],
-                            @"position" : position,
-                            @"channel" : self.metadata[@"channel"]
-                            };
-    
+        @"session_id" : self.metadata[@"session_id"],
+        @"asset_id" : self.metadata[@"asset_id"],
+        @"pod_id" : self.metadata[@"pod_id"],
+        @"title" : self.metadata[@"title"],
+        @"season" : self.metadata[@"season"],
+        @"episode" : self.metadata[@"episode"],
+        @"genre" : self.metadata[@"genre"],
+        @"program" : self.metadata[@"program"],
+        @"total_length" : total,
+        @"full_episode" : self.metadata[@"full_episode"],
+        @"publisher" : self.metadata[@"publisher"],
+        @"position" : position,
+        @"channel" : self.metadata[@"channel"]
+    };
+
     [[SEGAnalytics sharedAnalytics] track:@"Video Content Playing" properties:props];
 }
 
 - (void)startPlayheadTimer
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-            self.playheadTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(playHeadTimeEvent) userInfo:nil repeats:YES];
+        self.playheadTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(playHeadTimeEvent) userInfo:nil repeats:YES];
     });
 }
 
@@ -305,27 +304,34 @@ static int AAPLPlayerViewControllerKVOContext = 0;
         [self.player play];
         NSNumber *position = [NSNumber numberWithFloat:CMTimeGetSeconds(self.currentTime)];
         NSNumber *total = [NSNumber numberWithFloat:CMTimeGetSeconds(self.duration)];
-        
-        NSDictionary *props = @{
-                                     @"session_id" : self.metadata[@"session_id"],
-                                     @"asset_id" : self.metadata[@"asset_id"],
-                                     @"pod_id" : self.metadata[@"pod_id"],
-                                     @"title" : self.metadata[@"title"],
-                                     @"season" : self.metadata[@"season"],
-                                     @"episode" : self.metadata[@"episode"],
-                                     @"genre" : self.metadata[@"genre"],
-                                     @"program" : self.metadata[@"program"],
-                                     @"total_length" : total,
-                                     @"full_episode" : self.metadata[@"full_episode"],
-                                     @"publisher" : self.metadata[@"publisher"],
-                                     @"position" : position,
-                                     @"channel" : self.metadata[@"channel"]
-                                     };
 
-        [[SEGAnalytics sharedAnalytics] track:@"Video Playback Started" properties:props];
+        NSDictionary *props = @{
+            @"session_id" : self.metadata[@"session_id"],
+            @"content_asset_id" : self.metadata[@"asset_id"],
+            @"pod_id" : self.metadata[@"pod_id"],
+            @"title" : self.metadata[@"title"],
+            @"season" : self.metadata[@"season"],
+            @"episode" : self.metadata[@"episode"],
+            @"genre" : self.metadata[@"genre"],
+            @"program" : self.metadata[@"program"],
+            @"total_length" : total,
+            @"full_episode" : self.metadata[@"full_episode"],
+            @"publisher" : self.metadata[@"publisher"],
+            @"position" : position,
+            @"channel" : self.metadata[@"channel"],
+            @"video_player" : self.metadata[@"video_player"]
+        };
+
+        [[SEGAnalytics sharedAnalytics] track:@"Video Playback Started" properties:props options:@{
+            @"Integrations" : @{
+                @"Adobe Analytics" : @{
+                    @"debug" : @YES
+                }
+            }
+        }];
         [[SEGAnalytics sharedAnalytics] track:@"Video Content Started" properties:props];
         [self startPlayheadTimer];
-        
+
     } else {
         // playing so pause
         [self.player pause];
@@ -342,7 +348,7 @@ static int AAPLPlayerViewControllerKVOContext = 0;
                                                                                      @"bitrate" : self.metadata[@"bitrate"],
                                                                                      @"total_length" : total,
                                                                                      @"livestream" : self.metadata[@"livestream"]
-                                                                                     }];
+        }];
     }
 }
 
@@ -350,14 +356,12 @@ static int AAPLPlayerViewControllerKVOContext = 0;
 {
     self.rate = MAX(self.player.rate - 2.0, -2.0); // rewind no faster than -2.0
     [self stopPlayheadTimer];
-
 }
 
 - (IBAction)fastForwardButtonWasPressed:(UIButton *)sender
 {
     self.rate = MIN(self.player.rate + 2.0, 2.0); // fast forward no faster than 2.0
     [self stopPlayheadTimer];
-
 }
 
 - (IBAction)timeSliderDidChange:(UISlider *)sender
@@ -371,32 +375,31 @@ static int AAPLPlayerViewControllerKVOContext = 0;
     [self stopPlayheadTimer];
     self.playerView.playerLayer.player = nil;
     self.playerView.playerLayer.player = self.player;
-    
+
     [[SEGAnalytics sharedAnalytics] screen:@"Big Buck Bunny"];
-    
+
     NSURL *movieURL = [[NSBundle mainBundle] URLForResource:@"BigBuck" withExtension:@"mp4"];
     self.asset = [AVURLAsset assetWithURL:movieURL];
     self.metadata = @{
-                      @"session_id" : @"19238109",
-                      @"asset_id" : @"1234",
-                      @"content_asset_id" : @"1234",
-                      @"video_player" : @"vimeo",
-                      @"sound" : @100,
-                      @"pod_id" :@"podId2",
-                      @"full_screen" : @YES,
-                      @"bitrate" : @50,
-                      @"livestream" : @NO,
-                      @"pod_id" : @"65462",
-                      @"title" : @"Big Buck Bunny: Peach",
-                      @"season" : @"1",
-                      @"episode" : @"1",
-                      @"genre" : @"cartoon",
-                      @"program" : @"Big Buck Bunny",
-                      @"full_episode" : @"true",
-                      @"publisher" : @"Blender Foundation",
-                      @"channel" : @"Creative Commons"
-                      };
-    
+        @"session_id" : @"19238109",
+        @"asset_id" : @"1234",
+        @"content_asset_id" : @"1234",
+        @"video_player" : @"vimeo",
+        @"sound" : @100,
+        @"pod_id" : @"podId2",
+        @"full_screen" : @YES,
+        @"bitrate" : @50,
+        @"livestream" : @NO,
+        @"pod_id" : @"65462",
+        @"title" : @"Big Buck Bunny: Peach",
+        @"season" : @"1",
+        @"episode" : @"1",
+        @"genre" : @"cartoon",
+        @"program" : @"Big Buck Bunny",
+        @"full_episode" : @"true",
+        @"publisher" : @"Blender Foundation",
+        @"channel" : @"Creative Commons"
+    };
 }
 
 - (IBAction)channelDownButtonPressed:(id)sender
@@ -404,31 +407,31 @@ static int AAPLPlayerViewControllerKVOContext = 0;
     [self stopPlayheadTimer];
     self.playerView.playerLayer.player = nil;
     self.playerView.playerLayer.player = self.player;
-    
+
     [[SEGAnalytics sharedAnalytics] screen:@"Popeye: NearlyWeds"];
-    
+
     NSURL *movieURL = [[NSBundle mainBundle] URLForResource:@"PopeyeMovie" withExtension:@"mp4"];
     self.asset = [AVURLAsset assetWithURL:movieURL];
     self.metadata = @{
-                      @"session_id" : @"32423905",
-                      @"asset_id" : @"5678",
-                      @"pod_id" :@"podId1",
-                      @"content_asset_id" : @"5678",
-                      @"video_player" : @"mp4",
-                      @"sound" : @100,
-                      @"full_screen" : @YES,
-                      @"bitrate" : @50,
-                      @"livestream" : @NO,
-                      @"pod_id" : @"65462",
-                      @"title" : @"Nearlyweds",
-                      @"season" : @"2",
-                      @"episode" : @"26",
-                      @"genre" : @"cartoon",
-                      @"program" : @"Popeye",
-                      @"full_episode" : @"true",
-                      @"publisher" : @"Time Warner",
-                      @"channel" : @"CBS",
-                      };
+        @"session_id" : @"32423905",
+        @"asset_id" : @"5678",
+        @"pod_id" : @"podId1",
+        @"content_asset_id" : @"5678",
+        @"video_player" : @"mp4",
+        @"sound" : @100,
+        @"full_screen" : @YES,
+        @"bitrate" : @50,
+        @"livestream" : @NO,
+        @"pod_id" : @"65462",
+        @"title" : @"Nearlyweds",
+        @"season" : @"2",
+        @"episode" : @"26",
+        @"genre" : @"cartoon",
+        @"program" : @"Popeye",
+        @"full_episode" : @"true",
+        @"publisher" : @"Time Warner",
+        @"channel" : @"CBS",
+    };
 }
 
 

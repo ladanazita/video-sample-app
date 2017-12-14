@@ -8,8 +8,5 @@ target 'AVFoundationSimplePlayer-iOS' do
   # Pods for AVFoundationSimplePlayer-iOS
   
   pod 'Analytics', '~> 3.0'
-#  pod "Segment-Nielsen-DCR", :path => ‘~/dev/src/github.com/segment-integrations/analytics-ios-integration-nielsen-dcr/’
-   pod "Segment-Nielsen-DCR", :git => ‘https://github.com/segment-integrations/analytics-ios-integration-nielsen-dcr.git’, :branch => 'initial/implementation'
-
-
+   pod 'Segment-Adobe-Analytics', :git => 'https://github.com/segment-integrations/analytics-ios-integration-adobe-analytics.git', :branch => 'implements/heartbeat-delegate'
 end

@@ -1,26 +1,37 @@
 PODS:
-  - Analytics (3.6.6)
-  - Segment-Nielsen-DCR (0.1.0):
-    - Analytics (~> 3.6)
+  - AdobeMobileSDK (4.14.1):
+    - AdobeMobileSDK/iOS (= 4.14.1)
+  - AdobeMobileSDK/iOS (4.14.1)
+  - AdobeVideoHeartbeatSDK (2.0.1):
+    - AdobeVideoHeartbeatSDK/iOS (= 2.0.1)
+  - AdobeVideoHeartbeatSDK/iOS (2.0.1):
+    - AdobeMobileSDK
+  - Analytics (3.6.9)
+  - Segment-Adobe-Analytics (1.0.0-beta):
+    - AdobeMobileSDK
+    - AdobeVideoHeartbeatSDK
+    - Analytics (~> 3.5)
 
 DEPENDENCIES:
   - Analytics (~> 3.0)
-  - Segment-Nielsen-DCR (from `https://github.com/segment-integrations/analytics-ios-integration-nielsen-dcr.git`, branch `initial/implementation`)
+  - Segment-Adobe-Analytics (from `https://github.com/segment-integrations/analytics-ios-integration-adobe-analytics.git`, branch `implements/heartbeat-delegate`)
 
 EXTERNAL SOURCES:
-  Segment-Nielsen-DCR:
-    :branch: initial/implementation
-    :git: https://github.com/segment-integrations/analytics-ios-integration-nielsen-dcr.git
+  Segment-Adobe-Analytics:
+    :branch: implements/heartbeat-delegate
+    :git: https://github.com/segment-integrations/analytics-ios-integration-adobe-analytics.git
 
 CHECKOUT OPTIONS:
-  Segment-Nielsen-DCR:
-    :commit: 784d55aa6729400521b1b8f2931098bf31f721a5
-    :git: https://github.com/segment-integrations/analytics-ios-integration-nielsen-dcr.git
+  Segment-Adobe-Analytics:
+    :commit: b297bb8d8a6a561cf228c38b2a811a084aaaa4f6
+    :git: https://github.com/segment-integrations/analytics-ios-integration-adobe-analytics.git
 
 SPEC CHECKSUMS:
-  Analytics: fe7d0bcaea04f90adcd39de78386ad239c97646b
-  Segment-Nielsen-DCR: 7ffb85a748dfc2a676dea11cd9a8365c0abe12ff
+  AdobeMobileSDK: c52311902b30ec6945fbd79ba3b9b20124467484
+  AdobeVideoHeartbeatSDK: 4879fe6d8e1b20d1a209d2909f84681bd277313a
+  Analytics: 6541ce337e99d9f7a2240a8b3953940a7be5f998
+  Segment-Adobe-Analytics: 27d57f9ab7e30efdbea81723dcd0f190ce52c16d
 
-PODFILE CHECKSUM: 12deb2bfac1122bba619017f951057179b781e84
+PODFILE CHECKSUM: e897a810e026eba7ee6cb2db25737aafcf368a92
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

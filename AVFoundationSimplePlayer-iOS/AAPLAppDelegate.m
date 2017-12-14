@@ -8,7 +8,7 @@
 
 #import "AAPLAppDelegate.h"
 #import <Analytics/SEGAnalytics.h>
-#import "SEGNielsenDCRIntegrationFactory.h"
+#import <Segment-Adobe-Analytics/SEGAdobeIntegrationFactory.h>
 
 
 @implementation AAPLAppDelegate
@@ -21,7 +21,7 @@
     configuration.trackApplicationLifecycleEvents = YES;
     configuration.flushAt = 1;
     configuration.recordScreenViews = YES;
-    [configuration use:[SEGNielsenDCRIntegrationFactory instance]];
+    [configuration use:[SEGAdobeIntegrationFactory instance]];
     [SEGAnalytics debug:YES];
     [SEGAnalytics setupWithConfiguration:configuration];
 }

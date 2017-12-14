@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1C45954EBC432ECF2547E78C /* libPods-AVFoundationSimplePlayer-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4FA40EC3016A1FCADE61DBA /* libPods-AVFoundationSimplePlayer-iOS.a */; };
+		954F1DA61FDF4D7300368ED2 /* ADBMobileConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 954F1DA51FDF4D7200368ED2 /* ADBMobileConfig.json */; };
 		9583622B1F1E8D81008AA248 /* NielsenAppApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9583622A1F1E8D81008AA248 /* NielsenAppApi.framework */; };
 		9583622D1F1E8E62008AA248 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9583622C1F1E8E62008AA248 /* libsqlite3.0.tbd */; };
 		9583622F1F1E8E6E008AA248 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9583622E1F1E8E6E008AA248 /* AdSupport.framework */; };
 		958362311F1E8E75008AA248 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 958362301F1E8E75008AA248 /* SystemConfiguration.framework */; };
 		958362331F1E8E7D008AA248 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 958362321F1E8E7D008AA248 /* CoreLocation.framework */; };
-		958362541F20298F008AA248 /* SEGNielsenDCRIntegration.m in Sources */ = {isa = PBXBuildFile; fileRef = 958362511F20298F008AA248 /* SEGNielsenDCRIntegration.m */; };
-		958362551F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 958362531F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.m */; };
 		95D5D06F1F4E533800E82BED /* PopeyeMovie.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 95D5D06E1F4E533800E82BED /* PopeyeMovie.mp4 */; };
 		95D5D0711F4E534100E82BED /* BigBuck.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 95D5D0701F4E534100E82BED /* BigBuck.mp4 */; };
 		D20EB3C21AF94FDE0059CD72 /* AAPLPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D20EB3C11AF94FDE0059CD72 /* AAPLPlayerViewController.m */; };
@@ -27,15 +26,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		954F1DA51FDF4D7200368ED2 /* ADBMobileConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ADBMobileConfig.json; sourceTree = "<group>"; };
 		9583622A1F1E8D81008AA248 /* NielsenAppApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NielsenAppApi.framework; sourceTree = "<group>"; };
 		9583622C1F1E8E62008AA248 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		9583622E1F1E8E6E008AA248 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		958362301F1E8E75008AA248 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		958362321F1E8E7D008AA248 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		958362501F20298F008AA248 /* SEGNielsenDCRIntegration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEGNielsenDCRIntegration.h; path = "../../dev/src/github.com/segment-integrations/analytics-ios-integration-nielsen-dcr/Segment-Nielsen-DCR/Classes/SEGNielsenDCRIntegration.h"; sourceTree = "<group>"; };
-		958362511F20298F008AA248 /* SEGNielsenDCRIntegration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEGNielsenDCRIntegration.m; path = "../../dev/src/github.com/segment-integrations/analytics-ios-integration-nielsen-dcr/Segment-Nielsen-DCR/Classes/SEGNielsenDCRIntegration.m"; sourceTree = "<group>"; };
-		958362521F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SEGNielsenDCRIntegrationFactory.h; path = "../../dev/src/github.com/segment-integrations/analytics-ios-integration-nielsen-dcr/Segment-Nielsen-DCR/Classes/SEGNielsenDCRIntegrationFactory.h"; sourceTree = "<group>"; };
-		958362531F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEGNielsenDCRIntegrationFactory.m; path = "../../dev/src/github.com/segment-integrations/analytics-ios-integration-nielsen-dcr/Segment-Nielsen-DCR/Classes/SEGNielsenDCRIntegrationFactory.m"; sourceTree = "<group>"; };
 		95D5D06E1F4E533800E82BED /* PopeyeMovie.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = PopeyeMovie.mp4; sourceTree = "<group>"; };
 		95D5D0701F4E534100E82BED /* BigBuck.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = BigBuck.mp4; sourceTree = "<group>"; };
 		9B96E0F8422CD421D60A3DDB /* Pods-AVFoundationSimplePlayer-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVFoundationSimplePlayer-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVFoundationSimplePlayer-iOS/Pods-AVFoundationSimplePlayer-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -108,12 +104,9 @@
 		D2385B391AF5181400DC8ADE = {
 			isa = PBXGroup;
 			children = (
+				954F1DA51FDF4D7200368ED2 /* ADBMobileConfig.json */,
 				958362581F20335D008AA248 /* Common */,
 				D2CF22161B1E5EAD0006C864 /* README.md */,
-				958362501F20298F008AA248 /* SEGNielsenDCRIntegration.h */,
-				958362511F20298F008AA248 /* SEGNielsenDCRIntegration.m */,
-				958362521F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.h */,
-				958362531F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.m */,
 				D2385B441AF5181400DC8ADE /* AVFoundationSimplePlayer-iOS */,
 				D2385B431AF5181400DC8ADE /* Products */,
 				0B3BE940B14C8BEA6A91F87A /* Pods */,
@@ -217,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D27489A31B1CD9370020D82A /* Localizable.strings in Resources */,
+				954F1DA61FDF4D7300368ED2 /* ADBMobileConfig.json in Resources */,
 				95D5D06F1F4E533800E82BED /* PopeyeMovie.mp4 in Resources */,
 				95D5D0711F4E534100E82BED /* BigBuck.mp4 in Resources */,
 				D2385B4B1AF5181400DC8ADE /* Main.storyboard in Resources */,
@@ -263,13 +257,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AVFoundationSimplePlayer-iOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -281,10 +278,8 @@
 			files = (
 				D23E499F1B0D30AF0013F574 /* AAPLAppDelegate.m in Sources */,
 				D27489A01B1CD92F0020D82A /* AAPLPlayerView.m in Sources */,
-				958362551F20298F008AA248 /* SEGNielsenDCRIntegrationFactory.m in Sources */,
 				D2C148E51B0FA7AD004F41DA /* main.m in Sources */,
 				D20EB3C21AF94FDE0059CD72 /* AAPLPlayerViewController.m in Sources */,
-				958362541F20298F008AA248 /* SEGNielsenDCRIntegration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
