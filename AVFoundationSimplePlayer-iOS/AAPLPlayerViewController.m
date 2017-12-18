@@ -76,14 +76,6 @@ static int AAPLPlayerViewControllerKVOContext = 0;
     NSNumber *total = [NSNumber numberWithFloat:CMTimeGetSeconds(self.duration)];
 
     [self stopPlayheadTimer];
-    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Completed" properties:@{ @"session_id" : self.metadata[@"session_id"],
-                                                                                    @"content_asset_id" : self.metadata[@"content_asset_id"],
-                                                                                    @"position" : position,
-                                                                                    @"sound" : self.metadata[@"sound"],
-                                                                                    @"full_screen" : self.metadata[@"full_screen"],
-                                                                                    @"total_length" : total,
-                                                                                    @"livestream" : self.metadata[@"livestream"] }];
-
     [[SEGAnalytics sharedAnalytics] track:@"Video Content Completed" properties:@{
         @"asset_id" : self.metadata[@"asset_id"],
         @"pod_id" : self.metadata[@"pod_id"],
@@ -98,6 +90,14 @@ static int AAPLPlayerViewControllerKVOContext = 0;
         @"channel" : self.metadata[@"channel"],
         @"position" : position
     }];
+
+    [[SEGAnalytics sharedAnalytics] track:@"Video Playback Completed" properties:@{ @"session_id" : self.metadata[@"session_id"],
+                                                                                    @"content_asset_id" : self.metadata[@"content_asset_id"],
+                                                                                    @"position" : position,
+                                                                                    @"sound" : self.metadata[@"sound"],
+                                                                                    @"full_screen" : self.metadata[@"full_screen"],
+                                                                                    @"total_length" : total,
+                                                                                    @"livestream" : self.metadata[@"livestream"] }];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
